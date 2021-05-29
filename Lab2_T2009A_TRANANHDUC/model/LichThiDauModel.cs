@@ -12,7 +12,7 @@ namespace Lab2_T2009A_TRANANHDUC.model
         {
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"update doi_bong set tran ='{lichThiDau.Tran}', ngay ='{lichThiDau.NgayThiDau}'" +
+                $"update lich_thi_dau set tran ='{lichThiDau.Tran}', ngay ='{lichThiDau.NgayThiDau}'" +
                 $", gio ='{lichThiDau.GioThiDau}, san ='{lichThiDau.SanThiDau}'' " +
                 $"where ma ='{lichThiDau.MaTranDau}'";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
@@ -48,10 +48,10 @@ namespace Lab2_T2009A_TRANANHDUC.model
                         lichThiDau.NgayThiDau = reader.GetString(ngay);
 
                         int gio = reader.GetOrdinal("gio");
-                        lichThiDau.NgayThiDau = reader.GetString(gio);
+                        lichThiDau.GioThiDau = reader.GetString(gio);
 
                         int san = reader.GetOrdinal("san");
-                        lichThiDau.NgayThiDau = reader.GetString(san);
+                        lichThiDau.SanThiDau = reader.GetString(san);
                         Console.WriteLine(
                             $"|{lichThiDau.MaTranDau,20}{"",10}|{lichThiDau.Tran,20}{"",10}|{lichThiDau.NgayThiDau,20}{"",10}|{lichThiDau.NgayThiDau,20}{"",10}|{lichThiDau.SanThiDau,20}{"",10}|");
                     }

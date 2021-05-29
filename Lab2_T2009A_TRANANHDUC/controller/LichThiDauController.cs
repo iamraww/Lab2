@@ -15,14 +15,15 @@ namespace Lab2_T2009A_TRANANHDUC.controller
         {
             Console.WriteLine("============================================");
             Console.WriteLine(
-                $"|{"Mã Trận Đấu",20}{"",10}|{"Trận",20}{"",10}|{"Ngày Đấu",20}{"",10}|{"Giờ Đấu",20}{"",10}|{"Sân Đấu",20}{"",10}|");
+                $"|{"Mã Trận Đấu",20}{"",10}|{"Trận",20}{"",10}|{"Ngày Đấu",20}{"",10}|{"Giờ Đấu",20}{"",10}" +
+                $"|{"Sân Đấu",20}{"",10}|");
             _lichThiDauModel.XemLichThiDau();
         }
 
         public void TaoLichThiDau()
         {
             Console.WriteLine("=====Tạo lịch thi đấu=======");
-            Console.WriteLine("Mã trận(4 số):");
+            Console.WriteLine("Mã trận(5 số):");
             _lichThiDau.MaTranDau = Console.ReadLine();
             Console.WriteLine("Trận Đấu:");
             _lichThiDau.Tran = Console.ReadLine();

@@ -1,4 +1,5 @@
-﻿using Lab2_T2009A_TRANANHDUC.entity;
+﻿using System;
+using Lab2_T2009A_TRANANHDUC.entity;
 using Lab2_T2009A_TRANANHDUC.util;
 using MySql.Data.MySqlClient;
 
@@ -23,17 +24,42 @@ namespace Lab2_T2009A_TRANANHDUC.model
             return false;
         }
 
-        public bool CheckLichThiDau(string ma)
+        public bool CheckMaTranDau(string ma)
         {
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"select * from lich_thi_dau where ma ='{ma}'";
+                $"select * from lich_thi_dau where ma_tran_dau ='{ma}'";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 if (reader.HasRows)
                 {
                     return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool CheckTrangThai(string ma)
+        {
+            DbConnection.Instance().OpenConnection();
+            var sqlQuery =
+                $"select * from lich_thi_dau where ma_tran_dau ='{ma}'";
+            var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int status = reader.GetOrdinal("status");
+                        int statusInterger = reader.GetInt32(status);
+                        if (statusInterger == 0)
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
 

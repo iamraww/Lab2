@@ -10,7 +10,7 @@ namespace Lab2_T2009A_TRANANHDUC.view
         {
             while (true)
             {
-                Console.WriteLine("=================================");
+                Console.WriteLine("=========Quản lý đội bóng=========");
                 Console.WriteLine("1. Xem danh sách đội bóng");
                 Console.WriteLine("2. Cập nhật danh sách đội bóng");
                 Console.WriteLine("3. Thêm mới một đội bóng");

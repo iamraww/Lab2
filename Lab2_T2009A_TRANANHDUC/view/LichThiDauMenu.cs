@@ -10,7 +10,7 @@ namespace Lab2_T2009A_TRANANHDUC.view
         {
             while (true)
             {
-                Console.WriteLine("================================================");
+                Console.WriteLine("==========Quản lý lịch thi đấu============");
                 Console.WriteLine("1. Xem lịch thi đấu");
                 Console.WriteLine("2. Cập nhật cập nhật lịch thi đấu");
                 Console.WriteLine("3. Tạo lịch thi đấu");
