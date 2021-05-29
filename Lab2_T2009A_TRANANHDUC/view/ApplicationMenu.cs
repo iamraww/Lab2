@@ -1,4 +1,6 @@
 ﻿using System;
+using Lab2_T2009A_TRANANHDUC.controller;
+
 // ReSharper disable FunctionNeverReturns
 
 namespace Lab2_T2009A_TRANANHDUC.view
@@ -7,6 +9,7 @@ namespace Lab2_T2009A_TRANANHDUC.view
     {
         private DoiBongMenu _doiBongMenu = new DoiBongMenu();
         private LichThiDauMenu _lichThiDauMenu = new LichThiDauMenu();
+        private KetQuaController _ketQuaController = new KetQuaController();
         public void Menu()
         {
             while (true)
@@ -28,10 +31,10 @@ namespace Lab2_T2009A_TRANANHDUC.view
                         _lichThiDauMenu.Menu();
                         break;
                     case 3:
-                        Console.WriteLine(3);
+                        Console.WriteLine("Quản lý kết quả");
                         break;
                     case 4:
-                        Console.WriteLine(4);
+                        Console.WriteLine("Thống Kê");
                         break;
                     default:
                         break;

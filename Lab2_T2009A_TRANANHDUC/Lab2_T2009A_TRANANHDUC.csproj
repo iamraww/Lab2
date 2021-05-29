@@ -96,6 +96,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="controller\DoiBongController.cs" />
+        <Compile Include="controller\KetQuaController.cs" />
         <Compile Include="controller\LichThiDauController.cs" />
         <Compile Include="entity\DoiBong.cs" />
         <Compile Include="entity\LichThiDau.cs" />
