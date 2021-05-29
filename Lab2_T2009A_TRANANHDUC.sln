@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2_T2009A_TRANANHDUC", "Lab2_T2009A_TRANANHDUC\Lab2_T2009A_TRANANHDUC.csproj", "{6C56375A-7448-4031-9373-29F8AE5D42C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C56375A-7448-4031-9373-29F8AE5D42C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C56375A-7448-4031-9373-29F8AE5D42C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C56375A-7448-4031-9373-29F8AE5D42C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C56375A-7448-4031-9373-29F8AE5D42C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,3 @@
+ -- BẬT XAMPP
+ -- TRUY CẬP VÀO MYSQL, TẠO 1 DATABASE MỚI TÊN "champion_ship"
+	++ Chọn "Export" sau đó tìm tới file champion_ship.sql
