@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 29, 2021 lúc 04:23 AM
+-- Thời gian đã tạo: Th5 29, 2021 lúc 03:56 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.3.27
 
@@ -55,17 +55,21 @@ CREATE TABLE `lich_thi_dau` (
   `tran` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ngay` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `gio` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `san` varchar(255) CHARACTER SET utf8 DEFAULT NULL
+  `san` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `ket_qua` varchar(20) CHARACTER SET utf8 DEFAULT 'Chua cap nhat',
+  `status` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `lich_thi_dau`
 --
 
-INSERT INTO `lich_thi_dau` (`ma_tran_dau`, `tran`, `ngay`, `gio`, `san`) VALUES
-('2039', 'T2009A vs T8686', '01/01/2022', '18h', 'FPT Aptech'),
-('9838', 'T2009 VS T2021', '01/01/2021', '18h', 'FPT Aptech'),
-('9850', 'T2009 VS T2021', '01/01/2022', '18h', 'FPT Aptech');
+INSERT INTO `lich_thi_dau` (`ma_tran_dau`, `tran`, `ngay`, `gio`, `san`, `ket_qua`, `status`) VALUES
+('2039', 'T2009A vs T8686', '01/01/2022', '18h', 'FPT Aptech', 'Chua cap nhat', 0),
+('3872', 'T2009M', '01/01/2022', '19h', 'FPT Aptech', 'Chua cap nhat', 0),
+('94873', 'T2008A VS T2007M', '20/20/2020', '19H', 'PFT Aptech', 'Chua cap nhat', 0),
+('9838', 'T2009 VS T2021', '01/01/2021', '18h', 'FPT Aptech', '2-1', 1),
+('9850', 'T2009 VS T2021', '01/01/2022', '18h', 'FPT Aptech', '0', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
