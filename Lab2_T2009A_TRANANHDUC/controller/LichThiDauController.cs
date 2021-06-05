@@ -11,6 +11,7 @@ namespace Lab2_T2009A_TRANANHDUC.controller
         private LichThiDauModel _lichThiDauModel = new LichThiDauModel();
         private LichThiDau _lichThiDau = new LichThiDau();
         private Check _check = new Check();
+
         public void XemLichThiDau()
         {
             Console.WriteLine("============================================");
@@ -25,21 +26,30 @@ namespace Lab2_T2009A_TRANANHDUC.controller
             Console.WriteLine("=====Tạo lịch thi đấu=======");
             Console.WriteLine("Mã trận(5 số):");
             _lichThiDau.MaTranDau = Console.ReadLine();
-            
+
             Console.WriteLine("Nhập mã đội 1:");
             _lichThiDau.MaDoi1 = Console.ReadLine();
             if (_check.CheckMaDoiBong(_lichThiDau.MaDoi1))
             {
+                Console.WriteLine("Nhập tên đội 1:");
+                _lichThiDau.TenDoi1 = Console.ReadLine();
+
                 Console.WriteLine("Nhập mã đội 2:");
                 _lichThiDau.MaDoi2 = Console.ReadLine();
                 if (_check.CheckMaDoiBong(_lichThiDau.MaDoi2))
                 {
+                    Console.WriteLine("Nhập tên đội 2:");
+                    _lichThiDau.TenDoi2 = Console.ReadLine();
+
                     Console.WriteLine("Ngày Thi Đấu:");
                     _lichThiDau.NgayThiDau = Console.ReadLine();
+
                     Console.WriteLine("Giờ Thi Đấu:");
                     _lichThiDau.GioThiDau = Console.ReadLine();
+
                     Console.WriteLine("Sân Thi Đấu:");
                     _lichThiDau.SanThiDau = Console.ReadLine();
+
                     if (_lichThiDauModel.TaoLichThiDau(_lichThiDau) != null)
                     {
                         Console.WriteLine($"Thêm thành công trận đấu");

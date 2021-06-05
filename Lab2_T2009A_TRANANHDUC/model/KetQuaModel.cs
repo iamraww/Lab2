@@ -14,8 +14,9 @@ namespace Lab2_T2009A_TRANANHDUC.model
         {
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"select * FROM lich_thi_dau " +
-                $"LEFT JOIN doi_bong";
+                $"SELECT * FROM lich_thi_dau " +
+                $"LEFT JOIN ket_qua " +
+                $"ON lich_thi_dau.ma_tran_dau = ket_qua.ma_tran_dau ";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
@@ -26,13 +27,23 @@ namespace Lab2_T2009A_TRANANHDUC.model
                         int ma = reader.GetOrdinal("ma_tran_dau");
                         _lichThiDau.MaTranDau = reader.GetString(ma);
                         
+                        int tenDoi1 = reader.GetOrdinal("ten_doi_1");
+                        _lichThiDau.TenDoi1 = reader.GetString(tenDoi1);
+                        int banThang1 = reader.GetOrdinal("ban_thang_doi_1");
+                        _ketQua.GhiBanDoi1 = reader.GetInt32(banThang1);
                         
-                        int ketQua = reader.GetOrdinal("ket_qua");
-                        _ketQua.KetQuaDau = reader.GetString(ketQua);
+                        int tenDoi2 = reader.GetOrdinal("ten_doi_2");
+                        _lichThiDau.TenDoi2 = reader.GetString(tenDoi2);
+                        int banThang2 = reader.GetOrdinal("ban_thang_doi_2");
+                        _ketQua.GhiBanDoi2 = reader.GetInt32(banThang2);
+                        
+                        string dau = $"{_lichThiDau.TenDoi1} - {_lichThiDau.TenDoi2}";
+                        string ketQua = $"{_ketQua.GhiBanDoi1} - {_ketQua.GhiBanDoi2}";
                         
                         Console.WriteLine(
                             $"|{_lichThiDau.MaTranDau,20}{"",10}" +
-                            $"|{_ketQua.KetQuaDau,20}{"",10}|");
+                            $"|{"",10}{dau ,25}" +
+                            $"|{"",10}{ketQua,25}");
                     }
                 }
             }
@@ -41,17 +52,18 @@ namespace Lab2_T2009A_TRANANHDUC.model
             return null;
         }
 
-        public KetQua ThemKetQua(KetQua ketQua, string maTranDau)
+        public KetQua ThemKetQua(KetQua ketQua)
         {
             DbConnection.Instance().OpenConnection();
-            var sqlQuery = $"update lich_thi_dau set ket_qua ='{ketQua.KetQuaDau}', status={ketQua.Status} " +
-                                $"where ma_tran_dau ={maTranDau}";
+            var sqlQuery =
+                $"insert into ket_qua (ma_tran_dau, ban_thang_doi_1,ban_thang_doi_2) value( '{ketQua.MaTranDau}','{ketQua.GhiBanDoi1}', '{ketQua.GhiBanDoi2}')";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             var result = cmd.ExecuteNonQuery();
             if (result == 1)
             {
                 return ketQua;
             }
+            DbConnection.Instance().CloseConnection();
             return null;
         }
     }

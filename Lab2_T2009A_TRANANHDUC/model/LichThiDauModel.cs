@@ -65,9 +65,10 @@ namespace Lab2_T2009A_TRANANHDUC.model
             lichThiDau.CreateAt = DateTime.Now;
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"insert into lich_thi_dau (ma_tran_dau , ma_doi_1, ma_doi_2, gio, ngay, san, create_at) " +
-                $"value ('{lichThiDau.MaTranDau}', '{lichThiDau.MaDoi1}', '{lichThiDau.MaDoi2}'," +
-                $" '{lichThiDau.GioThiDau}', '{lichThiDau.NgayThiDau}','{lichThiDau.SanThiDau}','{lichThiDau.CreateAt}')";
+                $"insert into lich_thi_dau (ma_tran_dau , ma_doi_1 ,ten_doi_1, ma_doi_2, ten_doi_2, gio, ngay, san, create_at) " +
+                $"value ('{lichThiDau.MaTranDau}', '{lichThiDau.MaDoi1}', '{lichThiDau.TenDoi1}', " +
+                $"'{lichThiDau.MaDoi2}', '{lichThiDau.TenDoi2}' ," +
+                $"'{lichThiDau.GioThiDau}', '{lichThiDau.NgayThiDau}','{lichThiDau.SanThiDau}','{lichThiDau.CreateAt}')";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             var result = cmd.ExecuteNonQuery();
             if (result == 1)

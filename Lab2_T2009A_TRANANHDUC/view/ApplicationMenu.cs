@@ -32,7 +32,7 @@ namespace Lab2_T2009A_TRANANHDUC.view
                         _lichThiDauMenu.Menu();
                         break;
                     case 3:
-                        _ketQuaController.XemKetQua();
+                        _quanLyKetQua.Menu();
                         break;
                     case 4:
                         Console.WriteLine("Thống Kê");

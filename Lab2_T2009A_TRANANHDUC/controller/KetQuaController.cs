@@ -17,40 +17,36 @@ namespace Lab2_T2009A_TRANANHDUC.controller
         {
             Console.WriteLine("============================================");
             Console.WriteLine(
-                $"|{"Mã trận đấu",20}{"",10}|{"Trận",20}{"",10}|{"Kết quả",20}{"",10}|");
+                $"|{"Mã trận đấu",20}{"",10}" +
+                $"|{"",10}{"Tên Đội 1 - Tên Đội 2",25}" +
+                $"|{"",10}{"Ghi bàn đội 1 - Ghi Bàn đội 2",25}");
             _ketQuaModel.XemKetQua();
-            Console.WriteLine("Bạn muốn cập nhật kết quả không(Y/N)?");
-            string q = Console.ReadLine();
-            if (q == "y" || q == "Y")
-            {
-                Console.WriteLine("Nhập mã trận đấu: ");
-                string maTranDau = Console.ReadLine();
-                if (_check.CheckMaTranDau(maTranDau))
-                {
-                    if (_check.CheckTrangThai(maTranDau))
-                    {
-                        DoiBong doiBong = _check.LayTen(maTranDau);
-                        Console.WriteLine("Nhập kết quả trận đấu");
-                        Console.WriteLine($"Nhập bàn thắng của đội {doiBong.TenDoiBong}:");
-                        _ketQua.GhiBanDoi1 = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Nhập bàn thắng của đội  {doiBong.TenDoiBong}:");
-                        _ketQua.GhiBanDoi2 = Convert.ToInt32(Console.ReadLine());
-                        if (_ketQuaThiDauService.ThemKetQuaService(_ketQua, maTranDau) != null)
-                        {
-                            Console.WriteLine($"Cập nhật thành công kết quả trận đấu số {maTranDau}");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Không thể cập nhật kết quả");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Không tìm thấy mã đội bóng");
-                }
-            }
 
+
+        }
+
+        public bool UpdateKetQua()
+        {
+            Console.WriteLine("Nhập mã trận đấu: ");
+            _ketQua.MaTranDau = Console.ReadLine();
+            if (_check.CheckMaTranDau(_ketQua.MaTranDau))
+            {
+                    LichThiDau lichThiDau = _check.LayTen(_ketQua.MaTranDau);
+                    Console.WriteLine("Nhập kết quả trận đấu");
+                    Console.WriteLine($"Nhập bàn thắng của {lichThiDau.TenDoi1}:");
+                    _ketQua.GhiBanDoi1 = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine($"Nhập bàn thắng của {lichThiDau.TenDoi2}:");
+                    _ketQua.GhiBanDoi2 = Convert.ToInt32(Console.ReadLine());
+                    if (_ketQuaModel.ThemKetQua(_ketQua) != null)
+                    {
+                        Console.WriteLine($"Cập nhật thành công kết quả trận đấu số {_ketQua.MaTranDau}");
+                    }
+            }
+            else
+            {
+                Console.WriteLine("Không tìm thấy mã trận đấu");
+            }
+            return false;
         }
     }
 }

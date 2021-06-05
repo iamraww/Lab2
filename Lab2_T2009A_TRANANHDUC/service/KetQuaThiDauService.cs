@@ -6,13 +6,8 @@ namespace Lab2_T2009A_TRANANHDUC.service
     public class KetQuaThiDauService
     {
         private KetQuaModel _ketQuaModel = new KetQuaModel();
-        public KetQua ThemKetQuaService(KetQua ketQua, string maTranDau)
+        public KetQua ThemKetQuaService(KetQua ketQua)
         {
-            ketQua.Status = 0;
-            if (_ketQuaModel.ThemKetQua(ketQua, maTranDau) != null)
-            {
-                return ketQua;
-            }
             return null;
         }
     }

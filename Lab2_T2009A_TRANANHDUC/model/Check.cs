@@ -66,24 +66,25 @@ namespace Lab2_T2009A_TRANANHDUC.model
             return false;
         }
 
-        public DoiBong LayTen(string maTranDau)
+        public LichThiDau LayTen(string maTranDau)
         {
-            DoiBong doiBong = new DoiBong();
+            LichThiDau lichThiDau = new LichThiDau();
             DbConnection.Instance().OpenConnection();
-            var sqlQuery =$"SELECT * FROM lich_thi_dau " +
-                            $"LEFT JOIN doi_bong " +
-                            $"ON lich_thi_dau.ma_tran_dau = '{maTranDau}' " +
-                            $"AND (lich_thi_dau.ma_doi_1 = doi_bong.ma OR lich_thi_dau.ma_doi_2 = doi_bong.ma)";
-            var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
+            var sqlQuery = $"SELECT * FROM lich_thi_dau " +
+                           $"where ma_tran_dau = '{maTranDau}' ";
+                            var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        int tenDoi = reader.GetOrdinal("ten");
-                        doiBong.TenDoiBong = reader.GetString(tenDoi);
-                        return doiBong;
+                        int tenDoi1 = reader.GetOrdinal("ten_doi_1");
+                        lichThiDau.TenDoi1 = reader.GetString(tenDoi1);
+                        
+                        int tenDoi2 = reader.GetOrdinal("ten_doi_2");
+                        lichThiDau.TenDoi2 = reader.GetString(tenDoi2);
+                        return lichThiDau;
                     }
                 }
             }
