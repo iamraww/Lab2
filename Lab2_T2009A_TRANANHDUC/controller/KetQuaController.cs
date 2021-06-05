@@ -29,8 +29,12 @@ namespace Lab2_T2009A_TRANANHDUC.controller
                 {
                     if (_check.CheckTrangThai(maTranDau))
                     {
+                        DoiBong doiBong = _check.LayTen(maTranDau);
                         Console.WriteLine("Nhập kết quả trận đấu");
-                        _ketQua.KetQuaDau = Console.ReadLine();
+                        Console.WriteLine($"Nhập bàn thắng của đội {doiBong.TenDoiBong}:");
+                        _ketQua.GhiBanDoi1 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Nhập bàn thắng của đội  {doiBong.TenDoiBong}:");
+                        _ketQua.GhiBanDoi2 = Convert.ToInt32(Console.ReadLine());
                         if (_ketQuaThiDauService.ThemKetQuaService(_ketQua, maTranDau) != null)
                         {
                             Console.WriteLine($"Cập nhật thành công kết quả trận đấu số {maTranDau}");
@@ -47,11 +51,6 @@ namespace Lab2_T2009A_TRANANHDUC.controller
                 }
             }
 
-        }
-
-        public void ThemKetQua()
-        {
-            
         }
     }
 }

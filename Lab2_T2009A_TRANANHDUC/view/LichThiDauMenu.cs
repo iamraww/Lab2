@@ -6,6 +6,7 @@ namespace Lab2_T2009A_TRANANHDUC.view
     public class LichThiDauMenu
     {
         private LichThiDauController _lichThiDauController = new LichThiDauController();
+
         public void Menu()
         {
             while (true)

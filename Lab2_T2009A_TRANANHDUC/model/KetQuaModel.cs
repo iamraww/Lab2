@@ -14,7 +14,8 @@ namespace Lab2_T2009A_TRANANHDUC.model
         {
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"select * from lich_thi_dau";
+                $"select * FROM lich_thi_dau " +
+                $"LEFT JOIN doi_bong";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
@@ -25,14 +26,12 @@ namespace Lab2_T2009A_TRANANHDUC.model
                         int ma = reader.GetOrdinal("ma_tran_dau");
                         _lichThiDau.MaTranDau = reader.GetString(ma);
                         
-                        int tran = reader.GetOrdinal("tran");
-                        _lichThiDau.Tran = reader.GetString(tran);
                         
                         int ketQua = reader.GetOrdinal("ket_qua");
                         _ketQua.KetQuaDau = reader.GetString(ketQua);
                         
                         Console.WriteLine(
-                            $"|{_lichThiDau.MaTranDau,20}{"",10}|{_lichThiDau.Tran,20}{"",10}" +
+                            $"|{_lichThiDau.MaTranDau,20}{"",10}" +
                             $"|{_ketQua.KetQuaDau,20}{"",10}|");
                     }
                 }

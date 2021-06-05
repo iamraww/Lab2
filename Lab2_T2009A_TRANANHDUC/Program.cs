@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Lab2_T2009A_TRANANHDUC.view;
 

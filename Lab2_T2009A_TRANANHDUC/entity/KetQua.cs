@@ -2,7 +2,10 @@
 {
     public class KetQua
     {
-        public string KetQuaDau { get; set; }
-        public int Status { get; set; }  // 0. Chưa có kết quả, 1. Đã có kết quả
+        public string MaTranDau { get; set; }
+        public string KetQuaDau { get; set; } // bỏ cái này đi
+        public int GhiBanDoi1 { get; set; }
+        public int GhiBanDoi2 { get; set; }
+        public int Status { get; set; }  // 0. Chưa thi đấu 1. Đang Thi đấu. 2. Kết thúc. -1. Hủy
     }
 }

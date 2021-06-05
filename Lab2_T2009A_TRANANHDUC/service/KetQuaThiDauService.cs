@@ -8,7 +8,7 @@ namespace Lab2_T2009A_TRANANHDUC.service
         private KetQuaModel _ketQuaModel = new KetQuaModel();
         public KetQua ThemKetQuaService(KetQua ketQua, string maTranDau)
         {
-            ketQua.Status = 1;
+            ketQua.Status = 0;
             if (_ketQuaModel.ThemKetQua(ketQua, maTranDau) != null)
             {
                 return ketQua;

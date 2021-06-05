@@ -20,7 +20,7 @@ namespace Lab2_T2009A_TRANANHDUC.model
                     return true;
                 }
             }
-
+            DbConnection.Instance().CloseConnection();
             return false;
         }
 
@@ -64,6 +64,30 @@ namespace Lab2_T2009A_TRANANHDUC.model
             }
 
             return false;
+        }
+
+        public DoiBong LayTen(string maTranDau)
+        {
+            DoiBong doiBong = new DoiBong();
+            DbConnection.Instance().OpenConnection();
+            var sqlQuery =$"SELECT * FROM lich_thi_dau " +
+                            $"LEFT JOIN doi_bong " +
+                            $"ON lich_thi_dau.ma_tran_dau = '{maTranDau}' " +
+                            $"AND (lich_thi_dau.ma_doi_1 = doi_bong.ma OR lich_thi_dau.ma_doi_2 = doi_bong.ma)";
+            var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int tenDoi = reader.GetOrdinal("ten");
+                        doiBong.TenDoiBong = reader.GetString(tenDoi);
+                        return doiBong;
+                    }
+                }
+            }
+            return null;
         }
     }
 }

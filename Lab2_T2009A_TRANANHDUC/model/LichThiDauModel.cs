@@ -12,7 +12,7 @@ namespace Lab2_T2009A_TRANANHDUC.model
         {
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"update lich_thi_dau set tran ='{lichThiDau.Tran}', ngay ='{lichThiDau.NgayThiDau}'" +
+                $"update lich_thi_dau set ngay ='{lichThiDau.NgayThiDau}'" +
                 $", gio ='{lichThiDau.GioThiDau}, san ='{lichThiDau.SanThiDau}'' " +
                 $"where ma ='{lichThiDau.MaTranDau}'";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
@@ -40,9 +40,7 @@ namespace Lab2_T2009A_TRANANHDUC.model
                         LichThiDau lichThiDau = new LichThiDau();
                         int ma = reader.GetOrdinal("ma_tran_dau");
                         lichThiDau.MaTranDau = reader.GetString(ma);
-
-                        int tran = reader.GetOrdinal("tran");
-                        lichThiDau.Tran = reader.GetString(tran);
+                        
 
                         int ngay = reader.GetOrdinal("ngay");
                         lichThiDau.NgayThiDau = reader.GetString(ngay);
@@ -53,7 +51,7 @@ namespace Lab2_T2009A_TRANANHDUC.model
                         int san = reader.GetOrdinal("san");
                         lichThiDau.SanThiDau = reader.GetString(san);
                         Console.WriteLine(
-                            $"|{lichThiDau.MaTranDau,20}{"",10}|{lichThiDau.Tran,20}{"",10}|{lichThiDau.NgayThiDau,20}{"",10}|{lichThiDau.NgayThiDau,20}{"",10}|{lichThiDau.SanThiDau,20}{"",10}|");
+                            $"|{lichThiDau.MaTranDau,20}{"",10}|{lichThiDau.NgayThiDau,20}{"",10}|{lichThiDau.NgayThiDau,20}{"",10}|{lichThiDau.SanThiDau,20}{"",10}|");
                     }
                 }
             }
@@ -64,17 +62,19 @@ namespace Lab2_T2009A_TRANANHDUC.model
 
         public LichThiDau TaoLichThiDau(LichThiDau lichThiDau)
         {
+            lichThiDau.CreateAt = DateTime.Now;
             DbConnection.Instance().OpenConnection();
             var sqlQuery =
-                $"insert into lich_thi_dau (ma_tran_dau, tran, ngay, gio, san) value ('{lichThiDau.MaTranDau}', " +
-                $"'{lichThiDau.Tran}', '{lichThiDau.NgayThiDau}', '{lichThiDau.GioThiDau}','{lichThiDau.SanThiDau}')";
+                $"insert into lich_thi_dau (ma_tran_dau , ma_doi_1, ma_doi_2, gio, ngay, san, create_at) " +
+                $"value ('{lichThiDau.MaTranDau}', '{lichThiDau.MaDoi1}', '{lichThiDau.MaDoi2}'," +
+                $" '{lichThiDau.GioThiDau}', '{lichThiDau.NgayThiDau}','{lichThiDau.SanThiDau}','{lichThiDau.CreateAt}')";
             var cmd = new MySqlCommand(sqlQuery, DbConnection.Instance().Connection);
             var result = cmd.ExecuteNonQuery();
             if (result == 1)
             {
                 return lichThiDau;
             }
-
+            DbConnection.Instance().CloseConnection();
             return null;
         }
     }

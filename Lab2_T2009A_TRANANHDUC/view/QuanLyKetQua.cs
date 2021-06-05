@@ -13,16 +13,12 @@ namespace Lab2_T2009A_TRANANHDUC.view
             {
                 Console.WriteLine("========Quản lý lịch thi đấu========");
                 Console.WriteLine("1. Xem kết quả");
-                Console.WriteLine("2. Thêm kết quả thi đấu");
                 Console.WriteLine("0. Quay lại menu");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
                         _ketQuaController.XemKetQua();
-                        break;
-                    case 2:
-                        _ketQuaController.ThemKetQua();
                         break;
                 }
 
